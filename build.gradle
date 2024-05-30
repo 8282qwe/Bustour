@@ -1,0 +1,78 @@
+plugins {
+    id 'java'
+    id 'war'
+    id 'org.springframework.boot' version '2.7.17'
+    id 'io.spring.dependency-management' version '1.1.5'
+    id 'org.asciidoctor.jvm.convert' version '3.3.2'
+}
+
+group = 'com.midichi'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set('snippetsDir', file("build/generated-snippets"))
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-web-services'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    annotationProcessor 'org.projectlombok:lombok'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
+    implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '3.0.0'
+
+    implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
+    implementation 'javax.servlet:jstl'
+
+    // https://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp
+    implementation group: 'org.apache.tiles', name: 'tiles-jsp', version: '3.0.8'
+
+    // https://mvnrepository.com/artifact/org.apache.tiles/tiles-el
+    implementation group: 'org.apache.tiles', name: 'tiles-el', version: '3.0.8'
+
+    // https://mvnrepository.com/artifact/org.apache.tiles/tiles-api
+    implementation group: 'org.apache.tiles', name: 'tiles-api', version: '3.0.8'
+
+    // https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api
+    compileOnly group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.3'
+
+    // https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/javax.servlet.jsp.jstl-api
+    compileOnly group: 'javax.servlet.jsp.jstl', name: 'javax.servlet.jsp.jstl-api', version: '1.2.1'
+
+    // https://mvnrepository.com/artifact/io.minio/minio
+    implementation group: 'io.minio', name: 'minio', version: '8.5.10'
+}
+
+tasks.named('test') {
+    outputs.dir snippetsDir
+    useJUnitPlatform()
+}
+
+tasks.named('asciidoctor') {
+    inputs.dir snippetsDir
+    dependsOn test
+}
