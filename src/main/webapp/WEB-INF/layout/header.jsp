@@ -18,6 +18,6 @@
     </style>
 </head>
 <body>
-<h1 class="mt-3">Spring Boot & JSP를 이용한 프로젝트</h1>
+<h1 class="mt-3">귀여운 창인이와 떠나는 버스 여행</h1>
 </body>
 </html>
