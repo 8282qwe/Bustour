@@ -1,6 +1,7 @@
 package api.Service;
 
 import api.Dto.keyWord.searchResultDto;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -23,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Slf4j
 public class keyWordSearchService {
 
     @Value("${NAVER_KEY}")
@@ -33,7 +35,7 @@ public class keyWordSearchService {
 
     public List<searchResultDto> searchKeyWord(String spot, String keyword) {
         String text = null;
-        text = URLEncoder.encode(spot+" "+keyword, StandardCharsets.UTF_8);
+        text = URLEncoder.encode(spot+" 근처 "+keyword, StandardCharsets.UTF_8);
         String apiURL = "https://openapi.naver.com/v1/search/local.json?display=10&start=1&sort=comment&query=" + text;
 
         Map<String, String> requestHeaders = new HashMap<>();

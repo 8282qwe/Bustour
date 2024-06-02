@@ -10,18 +10,18 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@Configuration  //스프링 실행시 설정파일 읽어드리기 위한 어노테이션
-@EnableSwagger2
+@Configuration
+@EnableSwagger2//스프링 실행시 설정파일 읽어드리기 위한 어노테이션
 public class SwaggerConfig {
 
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
+        return new Docket(DocumentationType.OAS_30)
+                .useDefaultResponseMessages(false)
                 .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.ant("/api/**"))
-                .build();
+                .apis(RequestHandlerSelectors.basePackage("api.Controller"))
+                .paths(PathSelectors.any())
+                .build().apiInfo(apiInfo());
     }
     public ApiInfo apiInfo(){
         return new ApiInfoBuilder()

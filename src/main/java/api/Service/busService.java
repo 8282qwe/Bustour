@@ -3,6 +3,7 @@ package api.Service;
 import api.Dto.bus.busStopDto;
 import api.Dto.bus.busStopListRequestDto;
 import api.Dto.bus.citysDto;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j
 public class busService {
 
     @Value("${BUS_KEY}")
@@ -87,4 +89,7 @@ public class busService {
             throw new RuntimeException(e);
         }
     }
+
+    //창인이 몫(postman의 노선정보 항목 조회 참고. 버스 노선별 첫차, 막차 시간, 출발지, 종점지 등을 조회)
+    public void getBusLineInfo(){}
 }

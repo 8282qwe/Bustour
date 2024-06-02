@@ -2,6 +2,7 @@ package minio.service;
 
 import io.minio.*;
 import io.minio.errors.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
 @Service
+@Slf4j
 public class storageService {
 
     @Autowired
@@ -38,6 +40,21 @@ public class storageService {
                     .bucket(bucketName)
                     .object(objectName)
                     .build());
+        } catch (ErrorResponseException | InsufficientDataException | InternalException | InvalidKeyException |
+                 InvalidResponseException | IOException | NoSuchAlgorithmException | ServerException |
+                 XmlParserException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deleteFile(String bucketName, String objectName){
+        RemoveObjectArgs args = RemoveObjectArgs.builder()
+                .bucket(bucketName)
+                .object(objectName)
+                .build();
+
+        try {
+            minioClient.removeObject(args);
         } catch (ErrorResponseException | InsufficientDataException | InternalException | InvalidKeyException |
                  InvalidResponseException | IOException | NoSuchAlgorithmException | ServerException |
                  XmlParserException e) {
