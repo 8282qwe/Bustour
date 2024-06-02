@@ -7,6 +7,7 @@ import api.Service.busService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
 @Api(tags = {"버스 노선 조회 API"})
+@Slf4j
 public class busController {
     final busService busService;
 

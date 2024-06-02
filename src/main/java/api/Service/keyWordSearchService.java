@@ -1,6 +1,7 @@
 package api.Service;
 
 import api.Dto.keyWord.searchResultDto;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -23,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Slf4j
 public class keyWordSearchService {
 
     @Value("${NAVER_KEY}")

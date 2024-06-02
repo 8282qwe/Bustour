@@ -1,6 +1,7 @@
 package api.Service;
 
 import api.Dto.bus.citysDto;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j
 public class convertService {
 
     @Value("${ZIO_APIKEY}")
