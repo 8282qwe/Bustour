@@ -19,7 +19,7 @@ import java.util.List;
 @Slf4j
 public class busService {
 
-    @Value("${BUS_KEY}")
+    @Value("${bus-api-key}")
     private String api_key;
 
     public List<citysDto> getCityCode() {

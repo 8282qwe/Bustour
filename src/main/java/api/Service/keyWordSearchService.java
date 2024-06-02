@@ -27,10 +27,10 @@ import java.util.Map;
 @Slf4j
 public class keyWordSearchService {
 
-    @Value("${NAVER_KEY}")
+    @Value("${naver-key}")
     private String api_key;
 
-    @Value("${NAVER_SECRET}")
+    @Value("${naver-secret}")
     private String api_secret;
 
     public List<searchResultDto> searchKeyWord(String spot, String keyword) {

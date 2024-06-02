@@ -1,6 +1,5 @@
 package api.Service;
 
-import api.Dto.bus.citysDto;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -12,17 +11,14 @@ import org.springframework.stereotype.Service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @Slf4j
 public class convertService {
 
-    @Value("${ZIO_APIKEY}")
+    @Value("${zio-api}")
     protected String api_key;
 
     public String converXY(String x, String y){
