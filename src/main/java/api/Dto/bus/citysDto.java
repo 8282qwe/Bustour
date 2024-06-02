@@ -1,4 +1,4 @@
-package api.Dto;
+package api.Dto.bus;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class busStopListRequestDto {
-    private int cityCode;
-    private String routeId;
+public class citysDto {
+    private int citycode;
+    private String cityname;
 }

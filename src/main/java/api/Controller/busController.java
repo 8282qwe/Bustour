@@ -1,8 +1,8 @@
 package api.Controller;
 
-import api.Dto.busStopDto;
-import api.Dto.busStopListRequestDto;
-import api.Dto.citysDto;
+import api.Dto.bus.busStopDto;
+import api.Dto.bus.busStopListRequestDto;
+import api.Dto.bus.citysDto;
 import api.Service.busService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
