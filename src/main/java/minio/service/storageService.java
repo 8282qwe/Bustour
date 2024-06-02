@@ -44,4 +44,19 @@ public class storageService {
             throw new RuntimeException(e);
         }
     }
+
+    public void deleteFile(String bucketName, String objectName){
+        RemoveObjectArgs args = RemoveObjectArgs.builder()
+                .bucket(bucketName)
+                .object(objectName)
+                .build();
+
+        try {
+            minioClient.removeObject(args);
+        } catch (ErrorResponseException | InsufficientDataException | InternalException | InvalidKeyException |
+                 InvalidResponseException | IOException | NoSuchAlgorithmException | ServerException |
+                 XmlParserException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

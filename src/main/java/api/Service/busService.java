@@ -87,4 +87,7 @@ public class busService {
             throw new RuntimeException(e);
         }
     }
+
+    //창인이 몫(postman의 노선정보 항목 조회 참고. 버스 노선별 첫차, 막차 시간, 출발지, 종점지 등을 조회)
+    public void getBusLineInfo(){}
 }

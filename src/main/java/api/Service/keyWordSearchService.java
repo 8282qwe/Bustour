@@ -33,7 +33,7 @@ public class keyWordSearchService {
 
     public List<searchResultDto> searchKeyWord(String spot, String keyword) {
         String text = null;
-        text = URLEncoder.encode(spot+" "+keyword, StandardCharsets.UTF_8);
+        text = URLEncoder.encode(spot+" 근처 "+keyword, StandardCharsets.UTF_8);
         String apiURL = "https://openapi.naver.com/v1/search/local.json?display=10&start=1&sort=comment&query=" + text;
 
         Map<String, String> requestHeaders = new HashMap<>();
