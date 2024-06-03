@@ -10,7 +10,7 @@
   <body>
   <div class="overlap">
     <img class="mdi-bus" src="https://miniodb.midichi.kro.kr/bustour/static/logo.png" />
-    <div class="text-wrapper">BUSDA</div>
+    <div class="text-wrapper"><a href="/" style="text-decoration: none; color: black; margin-left: 10%">BUSDA</a></div>
   </div>
   </body>
 </html>
