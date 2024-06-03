@@ -161,6 +161,7 @@
     letter-spacing: 0;
     line-height: normal;
     white-space: nowrap;
+    text-decoration: none;
 }
 
 .screen .text-wrapper-6 {

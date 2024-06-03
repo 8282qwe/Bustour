@@ -27,11 +27,11 @@
     </div>
     <div class="text-wrapper-4">Login</div>
     <div class="frame-3">
-        <div class="text-wrapper-5">아이디찾기</div>
+        <a href="./idsearch" class="text-wrapper-5">아이디찾기</a>
         <div class="text-wrapper-6">l</div>
-        <div class="text-wrapper-5">비밀번호찾기</div>
+        <a href="./pwsearch" class="text-wrapper-5">비밀번호찾기</a>
         <div class="text-wrapper-6">l</div>
-        <div class="text-wrapper-5">회원가입</div>
+        <a href="./memberinsert" class="text-wrapper-5">회원가입</a>
     </div>
 </div>
 </body>

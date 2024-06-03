@@ -60,14 +60,6 @@
     box-shadow: 0px 2px 4px #00000040;
 }
 
-.screen .butten {
-    position: absolute;
-    width: 557px;
-    height: 50px;
-    top: 476px;
-    left: 101px;
-    box-shadow: 0px 2px 4px #00000040;
-}
 
 .screen .frame-wrapper {
     height: 50px;
@@ -79,6 +71,11 @@
     height: 50px;
     background-color: var(--variable-collection-1);
     border-radius: 10px;
+    top: 476px;
+    left: 101px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 2px 4px #00000040;
+
 }
 
 .screen .text-wrapper-2 {
@@ -103,12 +100,17 @@
 
 .screen .frame-2 {
     height: 50px;
+    width: 556px;
     background-color: #ffffff;
     border: 1px solid;
     border-color: #dddddd;
     box-shadow: 0px 2px 4px #00000040;
     position: relative;
     border-radius: 10px;
+    font-style: var(--variable-collection);
+    font-size: 24px;
+    font-family: "Inter-ExtraBold", Helvetica;
+    font-weight: 800;
 }
 
 .screen .group-wrapper {
@@ -129,11 +131,12 @@
     background-color: var(--variable-collection-1);
     position: relative;
     border-radius: 10px;
+    border: 1px solid #ddd;
 }
 
 .screen .text-wrapper-3 {
-    top: 5px;
-    left: 10px;
+    top: 3px;
+    left: 7px;
     color: #ffffff;
     font-size: 20px;
     letter-spacing: 0;
@@ -144,17 +147,6 @@
     line-height: normal;
 }
 
-.screen .text-wrapper-4 {
-    top: 9px;
-    left: 19px;
-    color: var(--variable-collection);
-    font-size: 24px;
-    letter-spacing: 0;
-    position: absolute;
-    font-family: "Inter-ExtraBold", Helvetica;
-    font-weight: 800;
-    line-height: normal;
-}
 
 .screen .text-wrapper-5 {
     top: 40px;
