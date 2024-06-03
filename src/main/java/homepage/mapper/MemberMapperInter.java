@@ -20,5 +20,8 @@ public interface MemberMapperInter {
     public int getNickCheckCount(String searchnick);
     @Update("update user set nickname=#{nickname},photo=#{photo} where id=#{id}")
     public void insertProfile(profileDto dto);
-
+    @Select("""
+            select count(*) from user where id=#{id} and pw=#{pw}
+            """)
+    public boolean memberLogin(String id, String pw);
 }
