@@ -4,10 +4,8 @@ import homepage.Service.memberService;
 import homepage.dto.MemberDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.util.Map;
@@ -30,5 +28,14 @@ public class insertController {
     @ResponseBody
     public Map<String,Boolean> nickcheck(String searchnick){
         return memberService.getNickCheckCount(searchnick);
+    }
+
+    @PostMapping("/profileinsert")
+    public String insertProfile(@RequestParam("nickname") String nickname,
+                                @RequestParam("profile")MultipartFile file,
+                                HttpSession session){
+        System.out.println(file.getOriginalFilename());
+        memberService.insertProfile(nickname,session,file);
+        return "layout/main";
     }
 }
