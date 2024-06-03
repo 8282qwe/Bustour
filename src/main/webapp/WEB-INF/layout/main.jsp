@@ -9,7 +9,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
 <html>
 <body>
 <div class="frame">
@@ -32,8 +31,16 @@
     <div class="text-wrapper-7">로그인후 이용이 가능합니다</div>
 </div>
 <div class="frame-3">
-    <img class="vector" src="https://miniodb.midichi.kro.kr/bustour/static/search.png"/>
-    <div class="text-wrapper-8">버스 및 정거장을 검색해주세요</div>
+    <select class="form-control" id="citysel">
+        <option value="31150">시흥시</option>
+        <option value="31090">안산시</option>
+    </select>
+    <form class="search-box" action="" method="get">
+        <input class="search-text" type="text" name="search" placeholder="노선번호를 입력하세요">
+        <button class="search-btn" type="submit">
+            <img src="https://miniodb.midichi.kro.kr/bustour/static/search.png"/>
+        </button>
+    </form>
 </div>
 <div class="frame-4">
     <div class="text-wrapper-9">버스정보</div>
