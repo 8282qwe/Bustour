@@ -19,11 +19,11 @@
         </button>
     </div>
     <div class="navbar">
-        <div class="text-wrapper-4">아이디찾기</div>
-        <div class="text-wrapper-5">l</div>
-        <div class="text-wrapper-4">비밀번호찾기</div>
-        <div class="text-wrapper-5">l</div>
-        <div class="text-wrapper-4">회원가입</div>
+            <a href="./idsearch" class="text-wrapper-4">아이디찾기</a>
+            <div class="text-wrapper-5">l</div>
+            <a href="./pwsearch" class="text-wrapper-4">비밀번호찾기</a>
+            <div class="text-wrapper-5">l</div>
+            <a href="./memberinsert" class="text-wrapper-4">회원가입</a>
     </div>
 </div>
 <div class="frame-2">

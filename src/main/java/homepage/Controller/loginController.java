@@ -10,4 +10,16 @@ public class loginController {
     public String login(){
         return "member/login";
     }
+    @GetMapping("/idsearch")
+    public String idsearch(){
+        return "member/idsearch";
+    }
+    @GetMapping("/pwsearch")
+    public String pwsearch(){
+        return "member/pwsearch";
+    }
+    @GetMapping("/memberinsert")
+    public String memberinsert(){
+        return "member/memberinsert";
+    }
 }
