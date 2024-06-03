@@ -5,9 +5,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class pwcrypto {
-    final  BCryptPasswordEncoder passwordEncoder;
+    final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     protected String normalToCrypto(String normal){
         return passwordEncoder.encode(normal);
     }

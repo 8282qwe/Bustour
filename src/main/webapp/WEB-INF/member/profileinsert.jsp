@@ -30,23 +30,53 @@
     <link rel="stylesheet" href="styleguide.css" />
     <link rel="stylesheet" href="style.css" />
 </head>
+<script type="text/javascript">
+    let jungbok=false;
+
+    $(function (){
+        $(".frame-3").click(function () {
+            if ($("#nickname").val()==''){
+                alert("닉네임을 입력해주세여");
+                return;
+            }
+            $.ajax({
+                type:"get",
+                dataType:"json",
+                url:"./nickcheck",
+                data:{"searchnick":$("#nickname").val()},
+                success:function (data) {
+                    if (data.isCheck!==true){
+                        alert("가능한 닉네임입니다");
+                        jungbok=true;
+                    }else {
+                        alert("이미 사용중인 닉네임입니다");
+                        jungbok=false;
+                        $("#nickname").val("");
+                    }
+                }
+            })
+        })
+    })
+</script>
 <body>
         <div class="frame">
-            <div class="butten">
+            <form action="./profilreinsert" method="post">
                 <div class="frame-wrapper">
-                    <div class="div-wrapper"><div class="text-wrapper-2">작성 완료</div></div>
+                    <button class="div-wrapper" type="submit">
+                        <div class="text-wrapper-2">작성완료</div>
+                    </button>
                 </div>
-            </div>
             <div class="group-2">
-                <div class="frame-2">
+                <input class="frame-2" placeholder="닉네임" name="nickname" id="nickname">
                     <div class="group-wrapper">
                         <div class="group-3">
-                            <div class="frame-3"><div class="text-wrapper-3">중복체크</div></div>
+                            <button type="button" class="frame-3">
+                                <div class="text-wrapper-3">중복체크</div>
+                            </button>
                         </div>
                     </div>
-                    <div class="text-wrapper-4">닉네임</div>
-                </div>
             </div>
+            </form>
             <div class="text-wrapper-5">프로필 작성</div>
             <div>
                 <img class="frame-4" style="width: 114px;height: 114px;" src="https://miniodb.midichi.kro.kr/bustour/static/default.jpeg"/>
