@@ -19,11 +19,11 @@
         </button>
     </div>
     <div class="navbar">
-            <a href="./idsearch" class="text-wrapper-4">아이디찾기</a>
-            <div class="text-wrapper-5">l</div>
-            <a href="./pwsearch" class="text-wrapper-4">비밀번호찾기</a>
-            <div class="text-wrapper-5">l</div>
-            <a href="./memberinsert" class="text-wrapper-4">회원가입</a>
+        <a class="text-wrapper-4" onclick="searchID()">아이디찾기</a>
+        <div class="text-wrapper-5">l</div>
+        <a class="text-wrapper-4" onclick="searchPW()">비밀번호찾기</a>
+        <div class="text-wrapper-5">l</div>
+        <a href="./memberinsert" class="text-wrapper-4">회원가입</a>
     </div>
 </div>
 <div class="frame-2">
@@ -46,5 +46,73 @@
     <div class="text-wrapper-9">버스정보</div>
     <div class="text-wrapper-10">로그인후 이용이 가능합니다</div>
 </div>
+<script>
+    function searchID() {
+        Swal.fire({
+            title: '이름을 입력해 주세요',
+            input: 'text',
+            inputAttributes: {
+                autocapitalize: 'off'
+            },
+            showCancelButton: true,
+            confirmButtonText: '검색',
+            showLoaderOnConfirm: true,
+            preConfirm: (login) => {
+                return fetch(`/api/v1/searchID?name=\${login}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(response.statusText)
+                        }
+                        return response.json()
+                    })
+                    .catch(error => {
+                        Swal.showValidationMessage(
+                            `Request failed: \${error}`
+                        )
+                    })
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: `ID: \${result.value.id}`
+                })
+            }
+        });
+    }
+    function searchPW() {
+        Swal.fire({
+            title: '이름을 입력해 주세요',
+            input: 'text',
+            inputAttributes: {
+                autocapitalize: 'off'
+            },
+            showCancelButton: true,
+            confirmButtonText: '검색',
+            showLoaderOnConfirm: true,
+            preConfirm: (login) => {
+                return fetch(`/api/v1/searchPW?id=\${login}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(response.statusText)
+                        }
+                        return response.json()
+                    })
+                    .catch(error => {
+                        Swal.showValidationMessage(
+                            `Request failed: \${error}`
+                        )
+                    })
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: `PW: \${result.value.pw}`
+                })
+            }
+        });
+    }
+</script>
 </body>
 </html>
