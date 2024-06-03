@@ -35,7 +35,8 @@
     <form class="search-box" action="" method="get">
         <input class="search-text" type="text" name="search" placeholder="노선번호를 입력하세요">
         <button class="search-btn" type="submit">
-            <img src="https://miniodb.midichi.kro.kr/bustour/static/search.png"/>
+            <img src="https://miniodb.midichi.kro.kr/bustour/static/search.png"
+            onclick="location.href='./busnosun'"/>
         </button>
     </form>
 </div>
