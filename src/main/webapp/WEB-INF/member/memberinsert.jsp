@@ -59,7 +59,7 @@
                             </button>
                         </div>
                     </div>
-                <input class="frame-4" placeholder="비밀번호" name="pw">
+                <input class="frame-4" type="password" placeholder="비밀번호" name="pw">
                 <input class="frame-5" placeholder="이름" name="name">
                 <input class="frame-6" placeholder="전화번호" name="ph">
                 <input class="frame-7" placeholder="주소" name="address">
