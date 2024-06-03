@@ -272,9 +272,8 @@
         <div class="frame">
             <div class="text-wrapper-2">로그인 후 이용해주세요</div>
             <div class="butten">
-                <button class="overlap-group">
-                    <div class="text-wrapper-3"
-                         onclick="location.href='./login'">로그인</div>
+                <button class="overlap-group" onclick="location.href='./login'">
+                    <div class="text-wrapper-3">로그인</div>
                 </button>
             </div>
             <div class="navbar">
