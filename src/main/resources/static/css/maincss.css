@@ -204,6 +204,7 @@
     position: absolute;
     letter-spacing: 0;
     line-height: normal;
+    border: none;
 }
 
 .screen .frame-4 {
