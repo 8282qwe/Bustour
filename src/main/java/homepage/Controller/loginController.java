@@ -22,4 +22,8 @@ public class loginController {
     public String memberinsert(){
         return "member/memberinsert";
     }
+    @GetMapping("/busnosun")
+    public String busnosun(){
+        return "search/busnosun";
+    }
 }
