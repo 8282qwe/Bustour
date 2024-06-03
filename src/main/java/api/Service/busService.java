@@ -37,10 +37,8 @@ public class busService {
         sb.append("&routeId=").append(dto.getRouteId());
         sb.append("&cityCode=").append(dto.getCityCode());
 
-        System.out.println(sb);
         RestTemplate restTemplate = new RestTemplate();
         String jsonString = restTemplate.getForObject(sb.toString(), String.class);
-        System.out.println(jsonString);
         JSONParser jsonParser = new JSONParser();
         try {
             JSONObject jsonObject = (JSONObject) jsonParser.parse(jsonString);
@@ -52,7 +50,6 @@ public class busService {
 
             for (Object o : jsonItemList) {
                 JSONObject item = (JSONObject) o;
-                System.out.println(item.toString());
                 result.add(busStopDto.builder()
                         .gpslati(String.valueOf(item.get("gpslati")))
                         .gpslong(String.valueOf(item.get("gpslong")))
