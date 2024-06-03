@@ -3,6 +3,8 @@ package api.Service;
 import api.Dto.bus.busStopDto;
 import api.Dto.bus.busStopListRequestDto;
 import api.Dto.bus.citysDto;
+import api.mapper.cityCodeMapper;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -17,38 +19,15 @@ import java.util.List;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class busService {
+    final cityCodeMapper mapper;
 
     @Value("${bus-api-key}")
     private String api_key;
 
     public List<citysDto> getCityCode() {
-        StringBuilder sb = new StringBuilder("http://apis.data.go.kr/1613000/BusRouteInfoInqireService/getCtyCodeList");
-        sb.append("?serviceKey=").append(api_key);
-        sb.append("&_type=json");
-
-        RestTemplate restTemplate = new RestTemplate();
-        String jsonString = restTemplate.getForObject(sb.toString(), String.class);
-        JSONParser jsonParser = new JSONParser();
-        try {
-            JSONObject jsonObject = (JSONObject) jsonParser.parse(jsonString);
-            JSONObject jsonResponse = (JSONObject) jsonObject.get("response");
-            JSONObject jsonbody = (JSONObject) jsonResponse.get("body");
-            JSONObject jsonItems = (JSONObject) jsonbody.get("items");
-            JSONArray jsonItemList = (JSONArray) jsonItems.get("item");
-            List<citysDto> result = new ArrayList<>();
-
-            for (Object o : jsonItemList) {
-                JSONObject item = (JSONObject) o;
-                result.add(citysDto.builder()
-                        .citycode(Integer.parseInt(String.valueOf(item.get("citycode"))))
-                        .cityname(String.valueOf(item.get("cityname")))
-                        .build());
-            }
-            return result;
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+        return mapper.selectCitysCodeAll();
     }
 
     public List<busStopDto> getBusStopList(busStopListRequestDto dto) {
