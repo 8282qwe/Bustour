@@ -19,24 +19,12 @@
           rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <style>
-        body * {
-            font-family: 'Jua', sans-serif;
-        }
 
     </style>
 </head>
 <body>
 <div class="mainLayout container">
-    <div class="header row text-center">
-        <tiles:insertAttribute name="header"/>
-    </div>
-    <div class="menu row mt-4 gx-3">
-        <tiles:insertAttribute name="menu"/>
-    </div>
     <div class="info row mt-4">
-        <div class="col-2">
-            <tiles:insertAttribute name="info"/>
-        </div>
         <div class="main col-10 text-center ps-5">
             <tiles:insertAttribute name="main"/>
         </div>
