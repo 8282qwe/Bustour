@@ -39,6 +39,7 @@ public class convertService {
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject) jsonParser.parse(new BufferedReader(new InputStreamReader(new URL(sb.toString()).openStream(), StandardCharsets.UTF_8)));
             JSONObject jsonResponse = (JSONObject) jsonObject.get("response");
+            System.out.println(jsonResponse.toString());
             JSONArray jsonresult = (JSONArray) jsonResponse.get("result");
             JSONObject jsonStructures = (JSONObject) jsonresult.get(0);
             JSONObject jsonStructure = (JSONObject) jsonStructures.get("structure");
