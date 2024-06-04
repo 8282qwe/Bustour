@@ -49,7 +49,8 @@
                     .append($(`<div class="info_block" style="position:absolute;width: 500px;"></div>`)
                         .append($(`<p style="font-size: 25px">\${nodenm}</p>`))
                         .append($(`<p style="font-size: 20px;font-weight: lighter">\${nodeid}</p>`))
-                        .append($(`<p style="font-size: 15px">\${data.location}</p>`)))
+                        .append($(`<p style="font-size: 15px">\${data.location}</p>`))
+                        .append($(`<button type="button" onclick="location.href='/shoplist?x=\${gpslati}&y=\${gpslong}'"></button>`)))
             }
         })
     }
