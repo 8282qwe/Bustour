@@ -7,6 +7,7 @@ import api.Service.busService;
 import api.Service.convertService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -36,8 +37,9 @@ public class busController {
         return busService.getBusStopList(request);
     }
 
+    @ApiOperation(value = "정류소 주소", notes = "버스 노선별 정류소 조회")
     @GetMapping("/getLocation")
-    public Map<String, String> getLocation(String x, String y) {
+    public Map<String, String> getLocation(@ApiParam(name = "정류소 x좌표") String x, @ApiParam(name = "정류소 y좌표") String y) {
         Map<String, String> map = new HashMap<>();
         map.put("location",convertService.converXY(y,x));
         return map;
