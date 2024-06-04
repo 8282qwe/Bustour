@@ -29,13 +29,14 @@
     </c:if>
 <c:if test="${sessionScope.loginok!=null}">
     <div class="text-wrapper-2">
-        <img class="profilephoto" src="https://miniodb.midichi.kro.kr/bustour/profile/${sessionScope.photo}">
+        <img class="profilephoto" src="https://miniodb.midichi.kro.kr/bustour/profile/${sessionScope.photo}"
+        onclick="location.href='./profileupdate'">
         <p class="profiletext-1">${sessionScope.nickname}</p>
         <p class="profiletext-2">회원님</p>
-        <button type="button" class="profilebtn-1" onclick="location.href=''">
+        <button type="button" class="profilebtn-1" onclick="location.href='./memberupdate'">
             <div class="btntext-1">정보수정</div>
         </button>
-        <button class="profilebtn-2" type="button" onclick="location.href=''">
+        <button class="profilebtn-2" type="button" id="btnlogout">
             <div class="btntext-1">로그아웃</div>
         </button>
     </div>
@@ -164,6 +165,17 @@
             success : function (data){
                 renderingCity(data);
             }
+        })
+        $("#btnlogout").click(function () {
+            $.ajax({
+                type: "get",
+                dataType: "text",
+                url: 'member/logout',
+                success:function () {
+                    //새로고침
+                    location.reload();
+                }
+            })
         })
     })
 </script>

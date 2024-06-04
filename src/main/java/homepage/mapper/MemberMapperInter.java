@@ -28,5 +28,11 @@ public interface MemberMapperInter {
 
     @Select("select nickname,photo from user where id=#{id} and pw=#{pw}")
     userInfoDto selectUserInfobyIDandPw(String id,String pw);
+    @Update("update user set nickname=#{nickname} where id=#{id}")
+    public void updateprofile(profileDto dto);
+    @Update("update user set pw=#{pw},name=#{name},ph=#{ph},address=#{address} where id=#{id}")
+    public void updatememder(MemberDto dto);
 
+    @Select("select * from user where id=#{id}")
+    MemberDto searchByidUser(String id);
 }
