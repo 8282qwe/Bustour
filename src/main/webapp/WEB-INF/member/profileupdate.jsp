@@ -72,14 +72,14 @@
 </script>
 <body>
 <div class="frame">
-    <form action="./profileinsert" method="post" enctype="multipart/form-data">
+    <form action="./profilesave" method="post" enctype="multipart/form-data">
         <div class="frame-wrapper">
             <button class="div-wrapper" type="submit">
-                <div class="text-wrapper-2">작성완료</div>
+                <div class="text-wrapper-2">수정완료</div>
             </button>
         </div>
         <div class="group-2">
-            <input class="frame-2" value="#{dto.nickname}" name="nickname" id="nickname">
+            <input class="frame-2" value="${sessionScope.nickname}" name="nickname" id="nickname">
             <div class="group-wrapper">
                 <div class="group-3">
                     <button type="button" class="frame-3">
@@ -88,10 +88,10 @@
                 </div>
             </div>
         </div>
-        <div class="text-wrapper-5">프로필 작성</div>
+        <div class="text-wrapper-5">프로필 수정</div>
         <div>
             <img class="frame-4" style="width: 114px;height: 114px;"
-                 src="https://miniodb.midichi.kro.kr/bustour/static/default.jpeg"
+                 src="https://miniodb.midichi.kro.kr/bustour/profile/${sessionScope.photo}"
                  onclick="$('#photoupload').trigger('click')"/>
             <input name="profile" type="file" id="photoupload" style="display: none;">
         </div>

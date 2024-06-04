@@ -40,4 +40,9 @@ public class loginController {
     public String busnosun(){
         return "search/busnosun";
     }
+    @ResponseBody
+    @GetMapping("/member/logout")
+    public void memberLogout(HttpSession session){
+        session.removeAttribute("loginok");
+    }
 }
