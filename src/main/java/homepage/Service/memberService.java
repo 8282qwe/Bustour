@@ -2,6 +2,7 @@ package homepage.Service;
 
 import homepage.dto.MemberDto;
 import homepage.dto.profileDto;
+import homepage.dto.userInfoDto;
 import homepage.mapper.MemberMapperInter;
 import lombok.RequiredArgsConstructor;
 import minio.service.storageService;
@@ -70,7 +71,9 @@ public class memberService {
             map.put("status","success");
             //로그인 성공시 세션에 저장
             session.setAttribute("loginok","yes");
-            session.setAttribute("loginid",id);
+            userInfoDto dto = mapperInter.selectUserInfobyIDandPw(id,pw);
+            session.setAttribute("nickname",dto.getNickname());
+            session.setAttribute("photo",dto.getPhoto());
         }else {
             //아이디와 비번이 틀린경우
             map.put("status","fail");

@@ -12,6 +12,7 @@
 <html>
 <body>
 <div class="frame">
+    <c:if test="${sessionScope.loginok==null}">
     <div class="text-wrapper-2">로그인 후 이용해주세요</div>
     <div class="butten">
         <button class="overlap-group" onclick="location.href='./login'">
@@ -25,6 +26,20 @@
         <div class="text-wrapper-5">l</div>
         <a href="./memberinsert" class="text-wrapper-4">회원가입</a>
     </div>
+    </c:if>
+<c:if test="${sessionScope.loginok!=null}">
+    <div class="text-wrapper-2">
+        <img class="profilephoto" src="https://miniodb.midichi.kro.kr/bustour/profile/${sessionScope.photo}">
+        <p class="profiletext-1">${sessionScope.nickname}</p>
+        <p class="profiletext-2">회원님</p>
+        <button type="button" class="profilebtn-1" onclick="location.href=''">
+            <div class="btntext-1">정보수정</div>
+        </button>
+        <button class="profilebtn-2" type="button" onclick="location.href=''">
+            <div class="btntext-1">로그아웃</div>
+        </button>
+    </div>
+</c:if>
 </div>
 <div class="frame-2">
     <div class="text-wrapper-6">즐겨찾기</div>
