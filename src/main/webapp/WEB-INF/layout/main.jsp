@@ -49,10 +49,10 @@
 <div class="frame-3">
     <select class="form-control" id="citysel"></select>
     <form class="search-box" action="" method="get">
-        <input class="search-text" type="text" name="search" placeholder="노선번호를 입력하세요">
-        <button class="search-btn" type="submit">
+        <input class="search-text" type="text" name="search" placeholder="노선번호를 입력하세요" id="search">
+        <button class="search-btn" type="button">
             <img src="https://miniodb.midichi.kro.kr/bustour/static/search.png"
-            onclick="location.href='./busnosun'"/>
+            onclick="searchLine()"/>
         </button>
     </form>
 </div>
@@ -154,6 +154,29 @@
                 .append($(`<div class="row">배차간격 : \${item.intervaltime}</div>`))
                 .append($(`<div class="row">출발지 : \${item.startnodenm} ~ 종점 : \${item.endnodenm}</div>`))
                 .appendTo(board);
+        })
+    }
+
+    function searchLine(){
+        let citycode = $("#citysel").val();
+        let routeno = $("#search").val();
+        $.ajax({
+            url : "/api/v1/buslist",
+            type: "get",
+            dataType : "json",
+            data:{"citycode":citycode,"routeno":routeno},
+            success : function (data){
+                let line = $("#allLine").empty()
+                data.forEach(function (item,idx){
+                    line.append($(`<div class="row-md-5" style="margin-left: 30px;margin-top: 10px" onclick="location.href='/busnosun?cityCode=\${citycode}&routeId=\${item.routeid}&routeno=\${item.routeno}&startnodenm=\${item.startnodenm}&endnodenm=\${item.endnodenm}&startvehicletime=\${item.startvehicletime}&endvehicletime=\${item.endvehicletime}&routetp=\${item.routetp}'"></div>`)
+                        .append($(`<div class="row">\${item.routeno}</div>`))
+                        .append($(`<div class="row">첫차 \${item.startvehicletime} 막차 \${item.endvehicletime}</div>`))
+                        .append($(`<div class="row">출발지 : \${item.startnodenm} ~ 종점 : \${item.endnodenm}</div>`)))
+                })
+            },
+            error : function (){
+                alert("검색 결과가 없습니다.")
+            }
         })
     }
 

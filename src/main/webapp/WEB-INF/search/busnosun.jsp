@@ -18,7 +18,6 @@
                             <div class="text-wrapper-3">첫차 09:00, 막차 24:00</div>
                             <div class="text-wrapper-4">포동차고지 - 강남역</div>
                             <div class="text-wrapper-5">운행시간</div>
-                            <div class="text-wrapper-6">운행지역</div>
                         </div>
                     </div>
                     <div class="text-wrapper-7" id="stopinfo"><p style="font-size: 25px">정류장 상세정보<p></p></div>
@@ -56,15 +55,17 @@
     }
 
     $(function (){
+        let url = new URL(window.location.href)
+
         $.ajax({
             url:"/api/v1/getBusStopList",
             type:"post",
             dataType:"json",
-            data:JSON.stringify({"cityCode":31090,"routeId":"GGB217000004"}),
+            data:JSON.stringify({"cityCode":url.searchParams.get("cityCode"),"routeId":url.searchParams.get("routeId")}),
             headers : {"content-type":"application/json"},
-            success : function (data){
+            success : function (data) {
                 let draw = $("#draw").empty();
-                data.forEach(function (item,idx){
+                data.forEach(function (item, idx) {
                     $(`<li class="item_route active"></li>`)
                         .append($(`<button type="button" class="link_route has_panorama" onclick="loadStopInfo('\${item.nodenm}','\${item.nodeid}','\${item.gpslati}','\${item.gpslong}')"></button>`)
                             .append($(`<span class="icon_route"></span>`))
@@ -73,6 +74,10 @@
                                 <span class="route_id" style="font-weight: lighter">\${item.nodeid}</span>
                             </div>`))).appendTo(draw);
                 })
+                $(".text-wrapper-2").empty().text(url.searchParams.get("routeno"));
+                $(".text-wrapper-3").empty().text("첫차: "+url.searchParams.get("startvehicletime") +" 막차 : "+url.searchParams.get("endvehicletime"));
+                $(".text-wrapper-4").empty().text(url.searchParams.get("startnodenm") +" - "+url.searchParams.get("endnodenm"));
+                $(".text-wrapper-5").empty().text(url.searchParams.get("routetp"));
             }
         })
     })

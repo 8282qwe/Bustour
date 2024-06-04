@@ -83,22 +83,35 @@ public class busService {
             JSONObject jsonObject = (JSONObject) jsonParser.parse(jsonString);
             JSONObject jsonResponse = (JSONObject) jsonObject.get("response");
             JSONObject jsonbody = (JSONObject) jsonResponse.get("body");
-            if ((JSONObject)jsonbody.get("items") == null) return new ArrayList<busRouteResponseDto>();
             JSONObject jsonItems = (JSONObject) jsonbody.get("items");
-            JSONArray jsonItemList = (JSONArray) jsonItems.get("item");
             List<busRouteResponseDto> result = new ArrayList<>();
-
-            for (Object o : jsonItemList) {
-                JSONObject item = (JSONObject) o;
+            if (jsonItems.toString().charAt(8)=='{'){
+                JSONObject jsonItem = (JSONObject) jsonItems.get("item");
                 result.add(busRouteResponseDto.builder()
-                                .endnodenm(item.get("endnodenm").toString())
-                                .endvehicletime(item.get("endvehicletime").toString())
-                                .routeid(item.get("routeid").toString())
-                                .routeno(item.get("routeno").toString())
-                                .routetp(item.get("routetp").toString())
-                                .startnodenm(item.get("startnodenm").toString())
-                                .startvehicletime(item.get("startvehicletime").toString())
+                        .endnodenm(jsonItem.get("endnodenm").toString())
+                        .endvehicletime(jsonItem.get("endvehicletime").toString())
+                        .routeid(jsonItem.get("routeid").toString())
+                        .routeno(jsonItem.get("routeno").toString())
+                        .routetp(jsonItem.get("routetp").toString())
+                        .startnodenm(jsonItem.get("startnodenm").toString())
+                        .startvehicletime(jsonItem.get("startvehicletime").toString())
                         .build());
+            }
+            else {
+                JSONArray jsonItemList = (JSONArray) jsonItems.get("item");
+
+                for (Object o : jsonItemList) {
+                    JSONObject item = (JSONObject) o;
+                    result.add(busRouteResponseDto.builder()
+                            .endnodenm(item.get("endnodenm").toString())
+                            .endvehicletime(item.get("endvehicletime").toString())
+                            .routeid(item.get("routeid").toString())
+                            .routeno(item.get("routeno").toString())
+                            .routetp(item.get("routetp").toString())
+                            .startnodenm(item.get("startnodenm").toString())
+                            .startvehicletime(item.get("startvehicletime").toString())
+                            .build());
+                }
             }
             return result;
         } catch (ParseException e) {
