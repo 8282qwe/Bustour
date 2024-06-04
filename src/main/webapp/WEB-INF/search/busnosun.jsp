@@ -21,30 +21,12 @@
                             <div class="text-wrapper-6">운행지역</div>
                         </div>
                     </div>
-                    <div class="text-wrapper-7" id="stopinfo">정류장 상세정보</div>
+                    <div class="text-wrapper-7" id="stopinfo"><p style="font-size: 25px">정류장 상세정보<p></p></div>
                 </div>
             </div>
         </div>
         <div class="text-wrapper-8" style="overflow: auto">
             <ul class="drawline" id="draw">
-                <li class="item_route active">
-                    <button type="button" class="link_route has_panorama">
-                        <span class="icon_route"></span>
-                        <strong class="route_name">봉국사</strong>
-                        <div class="route_box">
-                            <span class="route_id">05229</span>
-                        </div>
-                    </button>
-                </li>
-                <li class="item_route active">
-                    <button type="button" class="link_route has_panorama">
-                        <span class="icon_route"></span>
-                        <strong class="route_name">가천대역두산위브</strong>
-                        <div class="route_box">
-                            <span class="route_id">05231</span>
-                        </div>
-                    </button>
-                </li>
             </ul>
         </div>
         <div class="frame-4">
@@ -64,9 +46,10 @@
             dataType: "json",
             success : function (data){
                 $("#stopinfo").empty()
-                    .append($(`<p>\${nodenm}</p>`))
-                    .append($(`<p>\${nodeid}</p>`))
-                    .append($(`<p>\${data.location}</p>`))
+                    .append($(`<div class="info_block" style="position:absolute;width: 500px;"></div>`)
+                        .append($(`<p style="font-size: 25px">\${nodenm}</p>`))
+                        .append($(`<p style="font-size: 20px;font-weight: lighter">\${nodeid}</p>`))
+                        .append($(`<p style="font-size: 15px">\${data.location}</p>`)))
             }
         })
     }
@@ -86,7 +69,7 @@
                             .append($(`<span class="icon_route"></span>`))
                             .append($(`<strong class="route_name">\${item.nodenm}</strong>`))
                             .append($(`<div class="route_box">
-                                <span class="route_id">\${item.nodeid}</span>
+                                <span class="route_id" style="font-weight: lighter">\${item.nodeid}</span>
                             </div>`))).appendTo(draw);
                 })
             }
