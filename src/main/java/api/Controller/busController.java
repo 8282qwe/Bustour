@@ -1,5 +1,6 @@
 package api.Controller;
 
+import api.Dto.bus.busRouteResponseDto;
 import api.Dto.bus.busStopDto;
 import api.Dto.bus.busStopListRequestDto;
 import api.Dto.bus.citysDto;
@@ -43,5 +44,10 @@ public class busController {
         Map<String, String> map = new HashMap<>();
         map.put("location",convertService.converXY(y,x));
         return map;
+    }
+
+    @GetMapping("/buslist")
+    public List<busRouteResponseDto> buslist(String citycode, String routeno){
+        return busService.getBusLineInfo(citycode,routeno);
     }
 }
