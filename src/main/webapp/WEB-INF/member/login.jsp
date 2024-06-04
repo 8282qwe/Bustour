@@ -37,18 +37,6 @@
                 }
             })
         })
-        //로그아웃 버튼
-        $("#btnlogout").click(function () {
-            $.ajax({
-                type: "get",
-                dataType: "text",
-                url: `${root}/member/logout`,
-                success:function () {
-                    //새로고침
-                    location.reload();
-                }
-            })
-        })
     })
 </script>
 <div class="frame">

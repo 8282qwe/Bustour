@@ -45,11 +45,13 @@ public class memberService {
     ){
         String filename = UUID.randomUUID().toString();
         profileDto dto = new profileDto().builder()
-                .id("1234")
+                .id(session.getAttribute("id").toString())
                 .nickname(nickname)
                 .photo(filename)
                 .build();
 
+        session.setAttribute("photo",filename);
+        session.setAttribute("nickname",nickname);
         mapperInter.insertProfile(dto);
         //스토리지에 업로드하기
         try {
@@ -72,6 +74,7 @@ public class memberService {
             //로그인 성공시 세션에 저장
             session.setAttribute("loginok","yes");
             userInfoDto dto = mapperInter.selectUserInfobyIDandPw(id,pw);
+            session.setAttribute("id",id);
             session.setAttribute("nickname",dto.getNickname());
             session.setAttribute("photo",dto.getPhoto());
         }else {
@@ -79,5 +82,35 @@ public class memberService {
             map.put("status","fail");
         }
         return map;
+    }
+
+    public void updateProfile( MultipartFile file,
+                              String nickname,
+                              HttpSession session){
+        //파일이 비어있다면
+        if (!file.isEmpty()){
+            //사진이름 = session.getAttribues("photo")
+            String photo = session.getAttribute("photo").toString();
+            //먼저 있던 사진 삭제
+            storageService.deleteFile("bustour","/profile/"+photo);
+            //사진 추가
+            insertProfile(nickname,session,file);
+        }
+        else {
+            mapperInter.updateprofile(new profileDto().builder()
+                    .id(session.getAttribute("id").toString())
+                    .nickname(nickname)
+                    .build());
+            session.setAttribute("nickname",nickname);
+        }
+    }
+    public void updatemember(MemberDto dto,HttpSession session)
+    {
+        dto.setId(session.getAttribute("id").toString());
+        mapperInter.updatememder(dto);
+    }
+
+    public MemberDto searchUser(String id){
+        return mapperInter.searchByidUser(id);
     }
 }
