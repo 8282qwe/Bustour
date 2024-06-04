@@ -2,7 +2,9 @@
     --variable-collection-1: rgba(22, 210, 252, 1);
     --variable-collection: rgba(148, 148, 148, 0.87);
 }
-
+p {
+    margin-bottom: 0.3em;
+}
 .screen {
     background-color: #ffffff;
     display: flex;
@@ -381,4 +383,35 @@
     top: 189px;
     left: 968px;
     object-fit: cover;
+}
+
+.star {
+    cursor: pointer;
+    appearance: none;
+    padding: 1px;
+}
+
+.star::after {
+    content: '☆';
+    color: hsl(60, 80%, 45%);
+    font-size: 20px;
+}
+
+.star:hover::after {
+    content: '★';
+}
+
+.star:checked::after {
+    content: '★';
+}
+
+.previewimg {
+    height: 140px;
+    width: 210px;
+    border-radius: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
