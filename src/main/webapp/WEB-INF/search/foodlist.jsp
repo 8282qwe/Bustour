@@ -9,6 +9,20 @@
 <!DOCTYPE html>
 <html>
 <body>
+<script>
+    function favoriteadd(title,link,category,address,roadaddress){
+        $.ajax({
+            url:"/api/v1/insertfavorite",
+            type:"post",
+            dataType:"text",
+            headers : {"content-type":"application/json"},
+            data:JSON.stringify({"title":title,"link":link,"category":category,"address":address,"roadaddress":roadaddress,"id":"1234"}),
+            success : function (){
+                alert("즐겨찾기 완료")
+            }
+        })
+    }
+</script>
         <div class="frame">
             <button type="button" class="butten" onclick="rendering($('.text-wrapper-2').text())"><div class="text-wrapper-2">카페</div></button>
             <button type="button" class="div-wrapper" onclick="rendering($('.text-wrapper-3').text())"><div class="text-wrapper-3">놀거리</div></button>
@@ -72,7 +86,7 @@
                         <p style="font-size: 0.8em">\${item.roadAddress}</p>
                         <p style="font-size: 0.7em">\${item.category}</p>
                     </div>`)).append($(`<div class="col-1">
-                        <input type="checkbox" class="star" onclick="favoriteadd(\${item.title},\${item.link},\${item.category},\${item.address},\${item.roadAddress})">
+                        <input type="checkbox" class="star" onclick="favoriteadd('\${item.title}','\${item.link}','\${item.category}','\${item.address}','\${item.roadAddress}')">
                     </div>`))
                     .appendTo(view);
                 })
@@ -80,20 +94,10 @@
         })
     }
 
-    function favoriteadd(title,link,category,address,roadaddress){
-        $.ajax({
-            url:"/api/v1/insertfavorite",
-            type:"post",
-            dataType:"text",
-            data:JSON.stringify({"title":title,"link":link,"category":category,"address":address,"roadaddress":roadaddress,"id":"1234"}),
-            success : function (){
-                location.reload();
-            }
-        })
-    }
     $(function (){
         rendering("맛집")
     })
+
 </script>
 </body>
 </html>
