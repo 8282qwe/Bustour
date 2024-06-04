@@ -2,6 +2,7 @@ package homepage.mapper;
 
 import homepage.dto.MemberDto;
 import homepage.dto.profileDto;
+import homepage.dto.userInfoDto;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -24,4 +25,8 @@ public interface MemberMapperInter {
             select count(*) from user where id=#{id} and pw=#{pw}
             """)
     public boolean memberLogin(String id, String pw);
+
+    @Select("select nickname,photo from user where id=#{id} and pw=#{pw}")
+    userInfoDto selectUserInfobyIDandPw(String id,String pw);
+
 }
