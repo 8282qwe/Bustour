@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: qhal5
@@ -28,13 +29,17 @@
             <ul class="drawline" id="draw">
             </ul>
         </div>
+
         <div class="frame-4">
+<c:if test="${sessionScope.loginok!=null}">
             <button type="button" class="butten"><div class="text-wrapper-9">로그아웃</div></button>
             <div class="group">
-                <div class="text-wrapper-10">김창인</div>
-                <div class="text-wrapper-11">회원님</div>
+                <p class="text-wrapper-10">${sessionScope.nickname}</p>
+                <p class="text-wrapper-11">회원님</p>
             </div>
-            <img class="ellipse" src="https://miniodb.midichi.kro.kr/bustour/profile/" />
+            <img class="profilephoto" src="https://miniodb.midichi.kro.kr/bustour/profile/${sessionScope.photo}"
+    onclick="location.href='./profileupdate'">
+</c:if>
         </div>
 <script>
     function loadStopInfo(nodenm,nodeid,gpslati,gpslong){
