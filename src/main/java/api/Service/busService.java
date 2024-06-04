@@ -1,5 +1,6 @@
 package api.Service;
 
+import api.Dto.bus.busRouteResponseDto;
 import api.Dto.bus.busStopDto;
 import api.Dto.bus.busStopListRequestDto;
 import api.Dto.bus.citysDto;
@@ -67,5 +68,41 @@ public class busService {
     }
 
     //창인이 몫(postman의 노선정보 항목 조회 참고. 버스 노선별 첫차, 막차 시간, 출발지, 종점지 등을 조회)
-    public void getBusLineInfo(){}
+    public List<busRouteResponseDto> getBusLineInfo(String citycode, String routeno){
+        StringBuilder sb = new StringBuilder("http://apis.data.go.kr/1613000/BusRouteInfoInqireService/getRouteNoList");
+        sb.append("?serviceKey=").append(api_key);
+        sb.append("&_type=json&numOfRows=100");
+        sb.append("&cityCode=").append(citycode);
+        sb.append("&routeNo=").append(routeno);
+
+        RestTemplate restTemplate = new RestTemplate();
+        String jsonString = restTemplate.getForObject(sb.toString(), String.class);
+        JSONParser jsonParser = new JSONParser();
+
+        try {
+            JSONObject jsonObject = (JSONObject) jsonParser.parse(jsonString);
+            JSONObject jsonResponse = (JSONObject) jsonObject.get("response");
+            JSONObject jsonbody = (JSONObject) jsonResponse.get("body");
+            if ((JSONObject)jsonbody.get("items") == null) return new ArrayList<busRouteResponseDto>();
+            JSONObject jsonItems = (JSONObject) jsonbody.get("items");
+            JSONArray jsonItemList = (JSONArray) jsonItems.get("item");
+            List<busRouteResponseDto> result = new ArrayList<>();
+
+            for (Object o : jsonItemList) {
+                JSONObject item = (JSONObject) o;
+                result.add(busRouteResponseDto.builder()
+                                .endnodenm(item.get("endnodenm").toString())
+                                .endvehicletime(item.get("endvehicletime").toString())
+                                .routeid(item.get("routeid").toString())
+                                .routeno(item.get("routeno").toString())
+                                .routetp(item.get("routetp").toString())
+                                .startnodenm(item.get("startnodenm").toString())
+                                .startvehicletime(item.get("startvehicletime").toString())
+                        .build());
+            }
+            return result;
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
