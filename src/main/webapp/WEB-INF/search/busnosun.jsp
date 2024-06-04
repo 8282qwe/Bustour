@@ -48,7 +48,7 @@
                 $("#stopinfo").empty()
                     .append($(`<div class="info_block" style="position:absolute;width: 500px;"></div>`)
                         .append($(`<p style="font-size: 25px">\${nodenm}</p>`))
-                        .append($(`<p style="font-size: 20px">\${nodeid}</p>`))
+                        .append($(`<p style="font-size: 20px;font-weight: lighter">\${nodeid}</p>`))
                         .append($(`<p style="font-size: 15px">\${data.location}</p>`)))
             }
         })
@@ -69,7 +69,7 @@
                             .append($(`<span class="icon_route"></span>`))
                             .append($(`<strong class="route_name">\${item.nodenm}</strong>`))
                             .append($(`<div class="route_box">
-                                <span class="route_id">\${item.nodeid}</span>
+                                <span class="route_id" style="font-weight: lighter">\${item.nodeid}</span>
                             </div>`))).appendTo(draw);
                 })
             }

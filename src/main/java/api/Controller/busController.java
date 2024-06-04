@@ -38,8 +38,6 @@ public class busController {
 
     @GetMapping("/getLocation")
     public Map<String, String> getLocation(String x, String y) {
-        System.out.println(x);
-        System.out.println(y);
         Map<String, String> map = new HashMap<>();
         map.put("location",convertService.converXY(y,x));
         return map;
