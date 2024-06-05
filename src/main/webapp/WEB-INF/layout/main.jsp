@@ -46,7 +46,9 @@
     <div class="text-wrapper-6">즐겨찾기</div>
     <div class="stars" id="stars" style="position:absolute; top: 70px; left:10px;height: 380px;width: 345px;">
     </div>
+<c:if test="${sessionScope.loginok==null}">
     <div class="text-wrapper-7">로그인후 이용이 가능합니다</div>
+</c:if>
 </div>
 <div class="frame-3">
     <select class="form-control" id="citysel"></select>
@@ -199,8 +201,9 @@
             })
         })
     })
+
 </script>
-<c:if test="${sessionScope.id!=null}">
+<c:if test="${sessionScope.loginok!=null}">
     <script>
         $(function () {
             favorite();
@@ -221,9 +224,9 @@
                             .append($(`<div class="col-10">
                         <p style="font-size: 1.0em;margin-bottom: 0px">\${item.title}</p>
                         <p style="font-size: 0.9em;margin-bottom: 0px"><a href="\${item.link}">\${item.link}<a></p>
-                        <p style="font-size: 0.8em;margin-bottom: 0px">\${item.address}</p>
-                        <p style="font-size: 0.4em;margin-bottom: 0px">\${item.roadaddress}</p>
-                        <p style="font-size: 0.3em;margin-bottom: 0px">\${item.category}</p>
+                        <p style="font-size: 15px;margin-bottom: 0px">\${item.address}</p>
+                        <p style="font-size: 10px;margin-bottom: 0px">\${item.roadaddress}</p>
+                        <p style="font-size: 10px;margin-bottom: 0px">\${item.category}</p>
                     </div>`)).append($(`<div class="col-1">
                         <input type="checkbox" class="star" onclick="favoritedel('\${item.title}','\${item.link}','\${item.category}','\${item.address}','\${item.roadAddress}')">
                     </div>`))
