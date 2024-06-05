@@ -38,7 +38,7 @@
         $.ajax({
             url:"/api/v1/searchuser",
             type: "get",
-            data:{"id":${sessionScope.id}},
+            data:{"id":'${sessionScope.id}'},
             dataType: "json",
             success : function (data) {
                 $("#name").val(data.name)
