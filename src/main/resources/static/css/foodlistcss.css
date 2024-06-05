@@ -354,8 +354,8 @@ p {
 
 .screen .text-wrapper-11 {
     position: absolute;
-    top: -5px;
-    left: 71px;
+    top: 1px;
+    right: 44px;
     font-family: "Inter-SemiBold", Helvetica;
     font-weight: 600;
     color: #000000;
