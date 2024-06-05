@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: qhal5
@@ -48,12 +49,22 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="butten-3"><div class="text-wrapper-10">로그아웃</div></button>
-        <div class="group-2">
-            <div class="text-wrapper-11">김창인</div>
-            <div class="text-wrapper-12">회원님</div>
-        </div>
-        <img class="ellipse" src="img/ellipse-1.png" />
+<div class="frame-14">
+<c:if test="${sessionScope.loginok==null}">
+    <div class="profiletext-1">로그인을 해주세요</div>
+    <button class="profilebtn" onclick="location.href='./login'">로그인
+    </button>
+</c:if>
+<c:if test="${sessionScope.loginok!=null}">
+    <button type="button" class="butten-3" id="btnlogout"><div class="text-wrapper-19">로그아웃</div></button>
+    <div class="group">
+        <p class="text-wrapper-11">${sessionScope.nickname}</p>
+        <p class="text-wrapper-12">회원님</p>
+    </div>
+    <img class="profilephoto" src="https://miniodb.midichi.kro.kr/bustour/profile/${sessionScope.photo}"
+         onclick="location.href='./profileupdate'">
+</c:if>
+</div>
 
 <script>
     function rendering(keyword){
@@ -96,6 +107,17 @@
 
     $(function (){
         rendering("맛집")
+        $("#btnlogout").click(function () {
+            $.ajax({
+                type: "get",
+                dataType: "text",
+                url: 'member/logout',
+                success: function () {
+                    //새로고침
+                    location.reload();
+                }
+            })
+        })
     })
 
 </script>

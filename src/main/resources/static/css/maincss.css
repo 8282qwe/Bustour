@@ -333,3 +333,33 @@
     font-size: 30px;
     color: #ffffff;
 }
+.row-md-5{
+    border-bottom: 1px solid #ddd;
+}
+.row{
+    width: 92%;
+}
+.star {
+    cursor: pointer;
+    appearance: none;
+    padding: 1px;
+}
+
+.star::after {
+    content: '★';
+    color: hsl(60, 80%, 45%);
+    font-size: 20px;
+}
+
+.star:hover::after {
+    content: '☆';
+}
+
+.star:checked::after {
+    content: '☆';
+}
+.col-10 {
+    flex: 0 0 auto;
+    width: 83.33333333%;
+    height: 120px;
+}

@@ -31,8 +31,13 @@
         </div>
 
         <div class="frame-4">
+<c:if test="${sessionScope.loginok==null}">
+    <div class="profiletext-1">로그인을 해주세요</div>
+        <button class="profilebtn" onclick="location.href='./login'">로그인
+        </button>
+</c:if>
 <c:if test="${sessionScope.loginok!=null}">
-            <button type="button" class="butten"><div class="text-wrapper-9">로그아웃</div></button>
+            <button type="button" class="butten" id="btnlogout"><div class="text-wrapper-9">로그아웃</div></button>
             <div class="group">
                 <p class="text-wrapper-10">${sessionScope.nickname}</p>
                 <p class="text-wrapper-11">회원님</p>
@@ -51,10 +56,11 @@
             success : function (data){
                 $("#stopinfo").empty()
                     .append($(`<div class="info_block" style="position:absolute;width: 500px;"></div>`)
+                        .append($(`<img src="https://miniodb.midichi.kro.kr/bustour/static/busstop.png" class="busstop">`) )
                         .append($(`<p style="font-size: 25px">\${nodenm}</p>`))
                         .append($(`<p style="font-size: 20px;font-weight: lighter">\${nodeid}</p>`))
                         .append($(`<p style="font-size: 15px">\${data.location}</p>`))
-                        .append($(`<button type="button" onclick="location.href='/shoplist?x=\${gpslati}&y=\${gpslong}'"></button>`)))
+                        .append($(`<button class="btn1" type="button" onclick="location.href='/shoplist?x=\${gpslati}&y=\${gpslong}'">상세보기</button>`)))
             }
         })
     }
@@ -84,6 +90,17 @@
                 $(".text-wrapper-4").empty().text(url.searchParams.get("startnodenm") +" - "+url.searchParams.get("endnodenm"));
                 $(".text-wrapper-5").empty().text(url.searchParams.get("routetp"));
             }
+        })
+        $("#btnlogout").click(function () {
+            $.ajax({
+                type: "get",
+                dataType: "text",
+                url: 'member/logout',
+                success: function () {
+                    //새로고침
+                    location.reload();
+                }
+            })
         })
     })
 </script>
