@@ -296,6 +296,7 @@
     top: -15px;
     left: -11px;
     border-radius: 100px;
+    border: 2px solid black;
 }
 .profiletext-1{
     position: absolute;
