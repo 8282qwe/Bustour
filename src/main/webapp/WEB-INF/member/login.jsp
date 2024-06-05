@@ -49,7 +49,7 @@
     <div class="group-2">
         <div class="group-3">
             <input class="frame-2" style="margin-bottom: 20px" placeholder="아이디" name="id">
-            <input class="frame-2" placeholder="비밀번호" name="pw">
+            <input type="password" class="frame-2" placeholder="비밀번호" name="pw">
         </div>
     </div>
     </form>
