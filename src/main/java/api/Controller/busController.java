@@ -34,7 +34,7 @@ public class busController {
 
     @ApiOperation(value = "버스 노선별 정류소 조회", notes = "버스 노선별 정류소 조회")
     @PostMapping("/getBusStopList")
-    public List<busStopDto> getBusStopList(@RequestBody busStopListRequestDto request) {
+    public List<busStopDto> getBusStopList(@ApiParam(name = "버스 노선을 위한 RequestDto")@RequestBody busStopListRequestDto request) {
         return busService.getBusStopList(request);
     }
 
@@ -46,8 +46,9 @@ public class busController {
         return map;
     }
 
+    @ApiOperation(value = "정류소 주소", notes = "버스 노선별 정류소 조회")
     @GetMapping("/buslist")
-    public List<busRouteResponseDto> buslist(String citycode, String routeno){
+    public List<busRouteResponseDto> buslist(@ApiParam(name = "도시코드")String citycode,@ApiParam(name = "정류소 코드") String routeno){
         return busService.getBusLineInfo(citycode,routeno);
     }
 }
