@@ -4,24 +4,25 @@
 
 1. 📺 프로젝트 소개
    ---------------
-   가족뿐만 아니라 여러명의 사용자가 각각 자신의 일정을 한눈에 확인하며 관리하고 그룹단위의 일정 관리를 좀 더 쉽게
-   할수 있도록 제작한 웹 페이지 서비스
-2. 🕰️ 개발 기간
+   간단한 이동 및 여행 중 주변에 보이는 버스정류장 및 버스 노선에 기반하여 먹거리, 놀거리, 맛집, 카페 등 여러가지를 추천하고 해당 장소를 즐겨찾기할 수 있도록 구성하여
+   여행 계획에 좀 더 좋은 선택지를 제공할 수 있도록 구성하였습니다.
+   
+3. 🕰️ 개발 기간
    ----------------
    + 2024.06.03 ~ 2024.06.05 (2일간)
 
-3. 🧑‍🤝‍🧑 맴버구성
+4. 🧑‍🤝‍🧑 맴버구성
    ----------------
   + 이장우 - 백엔드 및 배포 담당
   + 김창인 - 프론트 및 스타일 담당
 
 4. 🌐 개발 환경
    ----------------
-   + Backend
+   + Backend 
    <img src="https://img.shields.io/badge/JAVA-007396?style=flat-square&logo=Java&logoColor=white"/> <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white"/> <img src="https://img.shields.io/badge/Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=white"/> <img src="https://img.shields.io/badge/MYSQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/> <img src="https://img.shields.io/badge/Naver-4479A1?style=flat-square&logo=naver&logoColor=white"/>
-   + Frontend
+   + Frontend 
    <img src="https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/JS-ffff00?style=flat-square&logo=javascript&logoColor=white"/> <img src="https://img.shields.io/badge/Jquery-0769AD?style=flat-square&logo=jquery&logoColor=white"/>
-   + Deploy
+   + Deploy 
     <img src="https://img.shields.io/badge/Jenkins-D24939?style=flat-square&logo=jenkins&logoColor=white"/> <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"/> <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white"/> <img src="https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white"/>
     
 6. 📍 주요 기능
