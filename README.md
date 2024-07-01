@@ -73,4 +73,4 @@
      
 9. 🖨 실제 발표 자료
    ----------------
-   [실제 발표 자료 PDF](https://github.com/8282qwe/FamilyConnect/blob/998bb7ed4a57c675f152d6ed579d188a32af52a5/Group-by-group%20Schedule%20Planner_%EB%8D%B0%EB%B8%8C%EC%98%B5%EC%8A%A411%EA%B8%B0%20%EC%9D%B4%EC%9E%A5%EC%9A%B0.pdf)
+   [실제 발표 자료 PDF](https://github.com/user-attachments/files/16047318/default.pdf)
